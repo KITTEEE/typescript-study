@@ -19,3 +19,4 @@ class Teacher extends Person {
 const teacher = new Teacher();
 console.log(teacher.getName());
 console.log(teacher.getTeacherName());
+export {}
