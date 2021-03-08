@@ -16,7 +16,6 @@ interface Content {
     [propName:number]:Course[]
 }
 class Crowler {
-    // private secrect:string = "123456"
     private url = `http://localhost:5500/Chapter2/src/index.html`;
     async getRawHtml() {
         const result = await superagent.get(this.url);
