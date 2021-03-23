@@ -7,7 +7,7 @@ export interface Analyzer {
     analyze:(html:string,filePaht:string) => string
 }
 class Crowler {
-    private filePath = path.resolve(__dirname,'../data/course.json')
+    private filePath = path.resolve(__dirname,'../../data/course.json')
 
     private async getRawHtml() {
         try {
