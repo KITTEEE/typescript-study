@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 // import bodyParser from 'body-parser';
 var cookie_session_1 = __importDefault(require("cookie-session"));
+require("./controller/LoginController");
+require("./controller/CrowlerController");
 var router_1 = __importDefault(require("./router"));
 var app = express_1.default();
 var bodyParser = require('body-parser');
@@ -15,10 +17,6 @@ app.use(cookie_session_1.default({
     keys: ['kite yiu'],
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
-// app.use((req:Request,res:Response,next:NextFunction) => {
-//     req.teacherName = 'kite';
-//     next();
-// })
 app.use(router_1.default);
 app.listen(7001, function () {
     console.log('express server listening');

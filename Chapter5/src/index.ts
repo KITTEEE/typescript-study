@@ -2,6 +2,9 @@ import express,{Request,Response,NextFunction} from 'express';
 // import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 
+import './controller/LoginController';
+import './controller/CrowlerController';
+
 import router from './router';
 
 const app = express();
@@ -13,10 +16,7 @@ app.use(cookieSession({
     keys: ['kite yiu'],
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
   }))
-// app.use((req:Request,res:Response,next:NextFunction) => {
-//     req.teacherName = 'kite';
-//     next();
-// })
+
 app.use(router);
 
 app.listen(7001,() => {
