@@ -10,6 +10,7 @@ import Analyzer from '../utils/kiteAnalyzer';
 
 
 const checkLogin = (req:Request,res:Response,next:NextFunction) => {
+    console.log('checklogin middleware');
     const isLogin = !!(req.session ? req.session.login : undefined);
     if(isLogin) {
         next();
@@ -18,6 +19,10 @@ const checkLogin = (req:Request,res:Response,next:NextFunction) => {
     }
 }
 
+const test = (req:Request,res:Response,next:NextFunction) => {
+    console.log('test middleware');
+    next();
+}
 @controller('/')
 export class CrowlerController {
     @get('/getData')
@@ -31,6 +36,7 @@ export class CrowlerController {
 
     @get('/showData')
     @use(checkLogin)
+    @use(test)
     showData(req:Request,res:Response) {
         try {
             const position = path.join(__dirname,'../../data/course.json');

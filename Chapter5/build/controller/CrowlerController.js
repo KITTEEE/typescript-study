@@ -21,6 +21,7 @@ var util_1 = require("../utils/util");
 var crowler_1 = __importDefault(require("../utils/crowler"));
 var kiteAnalyzer_1 = __importDefault(require("../utils/kiteAnalyzer"));
 var checkLogin = function (req, res, next) {
+    console.log('checklogin middleware');
     var isLogin = !!(req.session ? req.session.login : undefined);
     if (isLogin) {
         next();
@@ -28,6 +29,10 @@ var checkLogin = function (req, res, next) {
     else {
         res.json(util_1.getResponseData(null, '请先登录'));
     }
+};
+var test = function (req, res, next) {
+    console.log('test middleware');
+    next();
 };
 var CrowlerController = /** @class */ (function () {
     function CrowlerController() {
@@ -59,6 +64,7 @@ var CrowlerController = /** @class */ (function () {
     __decorate([
         decorators_1.get('/showData'),
         decorators_1.use(checkLogin),
+        decorators_1.use(test),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", void 0)

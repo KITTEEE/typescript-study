@@ -3,6 +3,8 @@ import 'reflect-metadata';
 
 export function use(middleware:RequestHandler) {
     return function(target:any,key:string) {
-        Reflect.defineMetadata('middleware',middleware,target,key);
+        const mdw = Reflect.getMetadata('middlewares',target,key) || [];
+        mdw.push(middleware)
+        Reflect.defineMetadata('middlewares',mdw,target,key);
     }
 }

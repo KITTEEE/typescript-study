@@ -9,12 +9,12 @@ export function controller(root:string) {
         for(let key in target.prototype) {
             const path:string = Reflect.getMetadata('path',target.prototype,key);
             const method:Method = Reflect.getMetadata('method',target.prototype,key);
-            const middleware = Reflect.getMetadata('middleware',target.prototype,key);
+            const middlewares:RequestHandler[] = Reflect.getMetadata('middlewares',target.prototype,key);
             const handler:RequestHandler = target.prototype[key];
             if(path && method) {
                 const fullPath = root === '/' ? path : `${root}${path}`;
-                if(middleware) {
-                    router[method](fullPath,middleware,handler);
+                if(middlewares && middlewares.length) {
+                    router[method](fullPath,...middlewares,handler);
                 }else {
                     router[method](fullPath,handler);
                 }
