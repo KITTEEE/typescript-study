@@ -11,6 +11,7 @@ require("./controller/CrowlerController");
 var router_1 = __importDefault(require("./router"));
 var app = express_1.default();
 var bodyParser = require('body-parser');
+// app.use(bodyParser.json);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookie_session_1.default({
     name: 'session',

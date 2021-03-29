@@ -4,19 +4,26 @@ import {get,post,controller} from '../decorators';
 import {getResponseData} from '../utils/util';
 
 
-@controller('/')
+@controller('/api')
 export class LoginController {
 
     static isLogin(req:Request):boolean {
         return !!(req.session ? req.session.login : undefined);
     }
 
+    @get('/islogin')
+    isLogin(req:Request,res:Response) {
+        const isLogin = LoginController.isLogin(req);
+        res.json(getResponseData(isLogin));
+    }
+
     @post('/login')
     login(req:Request,res:Response) {
+        console.log(req.body,);
         const isLogin = LoginController.isLogin(req);
         const {password} = req.body;
         if(isLogin) {
-            res.json(getResponseData(false,'已登陆过'));
+            res.json(getResponseData(true));
         }else {
             if(password === '123' && req.session) {
                 req.session.login = true;
@@ -55,7 +62,7 @@ export class LoginController {
             res.send(`
                 <html>
                     <body>
-                        <form method="post" action="/login">
+                        <form method="post" action="/api/login">
                             <input type="password" name="password" />
                             <button type="submit">登录</button>
                         </form>

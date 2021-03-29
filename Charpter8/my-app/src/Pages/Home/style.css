@@ -1,0 +1,10 @@
+.home-page {
+    width: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+}
+
+.home-page .ant-btn {
+    margin-left: 20px;
+}
