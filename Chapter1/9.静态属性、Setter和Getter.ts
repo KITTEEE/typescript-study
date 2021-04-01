@@ -33,8 +33,9 @@ console.log(person2.name);
 // 2.2 静态属性是直接挂载在类上的，而不是类的实例上，静态属性直接通过类进行访问
 // 2.3 静态方法里是无法访问到实例的属性的，
 class Person3 {
+    name:string
     static sayHi() {
-        console.log('hi');
+        // console.log('hi');
         // console.log(this.name);
     }
 }

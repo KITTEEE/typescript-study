@@ -27,18 +27,18 @@
 // // const data = new DataManager([1])
 // const data = new DataManager<string>(['1'])
 
-// interface Item {
-//     name:string
-// }
-// class DataManager<T extends Item> {
-//     constructor(private data:T[]) {}
-//     getItem(index:number):T {
-//         return this.data[index]
-//     }
-//     getItemName(index:number):string {
-//         return this.data[index].name
-//     }
-// }
+interface Item {
+    name:string
+}
+class DataManager1<T> {
+    constructor(private data:T[]) {}
+    getItem(index:number):T {
+        return this.data[index]
+    }
+    getItemName(index:number):string {
+        return this.data[index].name
+    }
+}
 // const data = new DataManager([{name:'kite'}]);
 
 // 4. 如果我们只希望data数组是字符串或数字类型

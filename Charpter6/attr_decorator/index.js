@@ -12,16 +12,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 function nameDecorator(target, key) {
+    console.log(2);
     target[key] = 'yiu';
 }
 var Test = /** @class */ (function () {
-    function Test() {
-        this.name = 'kite';
+    function Test(nm) {
+        this.age = 12;
+        console.log(1);
+        this.nm = nm;
     }
     __decorate([
         nameDecorator
-    ], Test.prototype, "name", void 0);
+    ], Test.prototype, "nm", void 0);
     return Test;
 }());
-var test = new Test();
-console.log(test.__proto__.name);
+var test = new Test('kite');
+console.log(test.nm);
+console.log(test.age);
+console.log(Test.prototype.nm);
+console.log(Test.prototype.age);
+console.log(test.__proto__.nm);

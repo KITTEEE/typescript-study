@@ -87,4 +87,11 @@ const getPersonName4 = (person:Person4):void => {
 }
 getPersonName4(person4);
 
+// interface Kite {
+//     name:string,
+//     say(name:string):void
+// }
+
+// let kite:Kite = {name:'kite',say:(name:string) => {return '123'}}
+
 export {}

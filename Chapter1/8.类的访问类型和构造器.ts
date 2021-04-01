@@ -24,12 +24,13 @@ class Person2 {
     }
 }
 const person2 = new Person2();
+// console.log(person2.name);
 // person2.name = 'kite'; // private 的属性不能在类外被访问
 person2.sayHi(); // => 'kite
 
 // 1.3 protected 属性只能在类内或子类内部使用
 class Person3 {
-    public name:string
+    public name:string = 'kite'
     protected sayHi() {
         console.log(this.name);
     }

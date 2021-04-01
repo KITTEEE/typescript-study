@@ -7,8 +7,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-function paramDecorator(target, key, paramIndex) {
-    console.log(target, key, paramIndex); // 原型，方法名，参数位置索引
+function paramDecorator(aClass) {
+    return function (target, key, paramIndex) {
+        console.log(aClass === target);
+        // console.log(target,key,paramIndex); // 原型，方法名，参数位置索引
+    };
 }
 var Test1 = /** @class */ (function () {
     function Test1() {
@@ -17,9 +20,10 @@ var Test1 = /** @class */ (function () {
         console.log(name, age);
     };
     __decorate([
-        __param(1, paramDecorator)
+        __param(1, paramDecorator(Test1.prototype))
     ], Test1.prototype, "getInfo", null);
     return Test1;
 }());
 var test1 = new Test1();
-test1.getInfo('kite', 20);
+// test1.getInfo('kite',20);
+// console.log(test1.getInfo);

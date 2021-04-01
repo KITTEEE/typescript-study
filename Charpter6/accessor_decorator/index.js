@@ -1,3 +1,5 @@
+// TypeScript不允许同时装饰一个成员的get和set访问器
+// 因为在装饰器应用于一个属性描述符时，它联合了get和set访问器，而不是分开声明的
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15,6 +17,9 @@ var Test = /** @class */ (function () {
     Object.defineProperty(Test.prototype, "name", {
         get: function () {
             return this._name;
+        },
+        set: function (name) {
+            this._name = name;
         },
         enumerable: false,
         configurable: true

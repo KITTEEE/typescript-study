@@ -5,7 +5,7 @@
  */
 
 interface Bird {
-    fly:Boolean,
+    fly:Boolean
     sing:() => {}
 }
 
@@ -16,12 +16,12 @@ interface Dog {
 
 // 1. 通过类型断言的类型保护
 function trainAnimal(animal:Bird | Dog) {
-    // animal.sing();
-    if(animal.fly) {
-        (animal as Bird).sing();
-    }else {
-        (animal as Dog).bark();
-    }
+    animal.sing();
+    // if(animal.fly) {
+    //     (animal as Bird).sing();
+    // }else {
+    //     (animal as Dog).bark();
+    // }
 }
 
 // 2. 通过 in 语法的类型保护
@@ -55,3 +55,4 @@ function addSecond(first:object | numObj,second:object | numObj) {
     return 0;
     // return first.count + second.count
 }
+
